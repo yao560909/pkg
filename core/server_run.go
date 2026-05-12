@@ -13,12 +13,7 @@ import (
 	"go.uber.org/zap"
 )
 
-type server interface {
-	ListenAndServe() error
-	Shutdown(context.Context) error
-}
-
-func initServer(address string, router *gin.Engine, readTimeout, writeTimeout time.Duration) {
+func InitServer(address string, router *gin.Engine, readTimeout, writeTimeout time.Duration) {
 	srv := &http.Server{
 		Addr:           address,
 		Handler:        router,
